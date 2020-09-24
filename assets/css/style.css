@@ -1,7 +1,7 @@
 :root{
     /* Cores */
     --black: #000000;
-    --red: #f3123c;	
+    --red: #ca2430;	
     --lightGray: #f4f4f4;
     --gray: #686976;
     --white: #ffffff;
@@ -13,16 +13,20 @@
   body{
     font-family: var(--fontFamily);
   }
+  .hide{
+      display: none!important;
+  }
   /* main */
   #main {
     display: block;
     max-width: 933px;
     width: calc(100% - 15px);
-    height: 312px;
+    min-height: 312px;
+    height: auto;
     margin: 2vh auto;
     border: 1px solid var(--gray);
     background-color: var(--lightGray);
-    padding: 40px 10px;
+    padding: 30px 10px 10px;
   }
   /* mainHeader */
   #mainHeader a ,
@@ -32,9 +36,12 @@
     width: 100%;
     overflow: hidden;
   }
-  .mainHeader a .logo{
-    width: 250px;
+  #mainHeader a .logo{
+    width: 220px;
+    display: block;
+    margin-bottom: 30px;
   }
+  .navTabs.right,
   .navTabs {
     list-style: none;
     margin: 0;
@@ -68,8 +75,9 @@
   .navTabs li a{
     display: block;
     padding: 10px 20px 20px 10px;
-     position: relative;
-    font-size: 30px;  
+    position: relative;
+    font-size: 25px;  
+    font-weight: 500;
     text-decoration: none;
     color: var(--red);
     text-transform: uppercase;
@@ -82,18 +90,18 @@
       color: var(--gray);
       text-transform: uppercase;
   }
-  
   .navTabs.right li{
-    float: left;
+    float: right;
     display: block;
     border: none;
     width: auto;
     height: auto;
+    margin:0;
   }
   .navTabs.right li .btn-seller{
-    padding: 10px 25px;
+    padding: 8px 20px;
     margin: 0;
-    font-size: 16px; 
+    font-size: 14px; 
     border:2px solid var(--yellow);
     border-radius: 5px;
     color: var(--yellow);    
@@ -158,8 +166,8 @@
     float: left;
     display: block;
     font-weight: bold;
-    margin: 20px 0 0;
-
+    margin: 25px 0 0;
+    font-size: 14px;
 }
 .form-control  label .btn-search-complete::before{
     content: '>';
@@ -172,24 +180,23 @@
 .btn-clean-form{
     float: right;
     display: block;
-    font-size: 12px; 
+    font-size: 14px; 
     color: var(--gray);    
     transition: all .3s;
     background-color: transparent;
     border:none;
-    margin: 20px;
+    margin: 25px 20px 0; 
   }
   .btn-clean-form:hover{
       color: var(--black);
       transition: all .3s;
   }
-
   .btn-search{
     float: right;
     display: block;
-    font-size: 14px; 
+    font-size: 20px; 
     text-transform: uppercase;
-    padding: 10px 25px;
+    padding: 10px 55px;
     color: var(--white);    
     transition: all .3s;
     background-color: var(--red);
@@ -203,3 +210,47 @@
       border: 2px solid var(--red);
       transition: all .3s;
   }
+  .estoque{
+    width: 100%;
+  }
+  #resultadoBusca{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    place-content: normal;
+  }
+  .thumbCarros {
+    width: 265px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid var(--lightGray);
+    margin: 5px;
+    border-radius: 5px;
+}
+.thumbCarros img{
+    width: 100%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    max-width: 100%;
+}
+.thumbCarros h4{
+    font-size: 16px;
+    margin: 0 10px;
+}
+.thumbCarros p{
+    font-size: 12px;
+    margin: 0 10px;
+}
+
+.tituloResultado{
+    font-size: 16px;
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+}
+hr{
+    width: 100%;
+    margin-bottom: 10px;
+}

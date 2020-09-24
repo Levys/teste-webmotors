@@ -21,6 +21,7 @@ ready(function() {
     const selectModelo = document.querySelector("#selectModelo");
     const selectVersao  = document.querySelector("#selectVersao");
     const enviaBusca  = document.querySelector("#enviaBusca");
+    var carros;
     // Api de marcas
     const api = 'http://desafioonline.webmotors.com.br/api/OnlineChallenge';
     // Options Headers
@@ -88,15 +89,15 @@ ready(function() {
     })
     .then(json => {
         carros = json;
-        for(var i = 0; i < json.length; i++) {
-            var div = document.createElement('div');
+        for(let i = 0; i < json.length; i++) {
+            let div = document.createElement('div');
             div.className = 'thumbCarros hide '+json[i].Model;
             div.dataset.modelo = json[i].Model;
-            var h4 = document.createElement('h4');
+            let h4 = document.createElement('h4');
             h4.textContent = json[i].Make+' '+json[i].Model;
-            var img = document.createElement('img');
+            let img = document.createElement('img');
             img.src = json[i].Image;
-            var p = document.createElement('p');
+            let p = document.createElement('p');
             p.innerHTML = `${json[i].Version+' <br /> '+json[i].KM+' <br /> '+json[i].Price+' <br /> '+ json[i].YearFab+'/'+json[i].YearModel+' <br /> '+json[i].Color}`;
             div.appendChild(img);
             div.appendChild(h4);
@@ -105,18 +106,56 @@ ready(function() {
         }
     })
     .catch(error => console.log('Deu erro: '+ error));
-    // Events
+    // carrega os modelos a partir de marca
     selectMarca.addEventListener('change', (e) => {
         selectModelo.innerHTML = "";
         selectVersao.innerHTML = "";
         let str = '/Model?MakeID=';
         selectsForms(str,e.target.value);
     });
+    // carrega as versões a partir do modelo
     selectModelo.addEventListener('change', (e) => {
         let str = '/Version?ModelID=';
         selectsForms(str,e.target.value);
     });
-    
+    // Faz uma busca na lista pré-carregada
+    enviaBusca.addEventListener('click', (e) => {
+        e.preventDefault();
+        var thumbCarros = document.querySelectorAll('.thumbCarros');
+        [].forEach.call(thumbCarros, function(el) {
+            el.classList.add("hide");
+        });        
+        var elems = document.querySelectorAll('.resultadoBusca');
+        [].forEach.call(elems, function(el) {
+            el.classList.remove("hide");
+        });        
+        var str = selectModelo.options[selectModelo.selectedIndex].textContent;
+        var modeloResult = [...document.querySelectorAll('[data-modelo]')].map((data, i, arr) => {
+            let dt = data.dataset.modelo;
+            var thumbEstoque = document.querySelectorAll("."+dt);
+            var pResult = resultadoBusca.querySelector('.pResult');
+            if (pResult !== null) {
+                resultadoBusca.removeChild(pResult);
+                // console.log("O elemento #filho existe em #pai");
+              } else {
+                console.log("O elemento #filho não existe em #pai");
+              }
+                
+            if (dt == str) {
+                [].forEach.call(thumbEstoque, function(el) {
+                    el.classList.remove("hide");                    
+                });    
+            } else {
+                if (arr.length - 1 === i) {
+                    let p = document.createElement('p');
+                    p.className = 'pResult';
+                    p.textContent = 'Não encotramos nada em nosso estoque';
+                    resultadoBusca.append(p);
+                } 
+            }
+        });
+        
+    });
 });
 
 
