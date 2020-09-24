@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#f3123c" />
+    <meta name="description" content="Quer comprar ou vender um veículo sem sair de casa? Aqui você conta com uma experiência segura e 100% online. Acesse já!" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800&amp;display=swap" rel="stylesheet" crossorigin="crossorigin">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Webmotors | Compre, venda e financie carros usados, novos e motos</title>
+</head>
+<body>
+    <section id="main">
+        <header id="mainHeader">
+            <a href="#"><img src="assets/img/logo_webmotors.svg" class="logo" alt="logo" title="WeMotors" /></a>
+        </header>
+        <div id="mainContent">
+            <nav id="mainNav">     
+                <ul class="navTabs">
+                    <li class="active"><a href="#" class="btn-model" data-tab="cars"><span>Comprar</span>Carros</a></li>
+                    <li><a href="#" class="btn-model" data-tab="bikes"><span>Comprar</span>Motos</a></li>
+                </ul>            
+                <ul class="navTabs right" id="prospectSeller">
+                    <li><a href="#" class="btn-seller">Vender meu carro</a></li>
+                </ul>
+            </nav>
+            <div id="mainContentTabs">    
+                <div id="cars">
+                    <form class="form">
+                        <div class="form-control">
+                            <label>
+                                <input name="isNew" type="checkbox" class="checks"  /> Novos
+                            </label>
+                            <label>
+                                <input name="isUsed" type="checkbox" class="checks" /> Usados
+                            </label>
+                        </div>
+                        <div class="form-control">
+                            <label>
+                                Onde:
+                                <select class="select">
+                                    <option >São Paulo - SP</option>
+                                </select>
+                            </label>
+                            <label>
+                                Raio:
+                                <select class="select">
+                                    <option >50km</option>
+                                    <option >100km</option>
+                                    <option >150km</option>
+                                </select>
+                            </label>
+                            <label>
+                                Marca:
+                                <select class="select" id="selectMarca">
+                                    <option >Todas</option>
+                                </select>
+                            </label>
+                            <label>
+                                Modelo:
+                                <select class="select" id="selectModelo">
+                                    <option >Todos</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div class="form-control">
+                            <label>
+                                Ano Desejado:
+                                <input name="ano" type="text" class="input" />
+                            </label>
+                            <label>
+                                Faixa de Preço:
+                                <select class="select">
+                                    <option >R$ 0 - R$ 1000</option>
+                                    <option >R$ 1001 - R$ 5000</option>
+                                    <option >R$ 5001 - R$ 10000</option>
+                                    <option >R$ 10001 - R$ 15000+</option>
+                                </select>
+                            </label>
+                            <label>
+                                Versão:
+                                <select class="select" id="selectVersao">
+                                    <option >Todas</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div class="form-control">
+                            <label>
+                                <a class="btn-search-complete">Busca Avançada</a>
+                            </label>
+                            <button id="enviaBusca" class="btn-search" type="submit" value="1">
+                                Ver ofertas
+                            </button>
+                            <input class="btn-clean-form" type="reset" value="Limpar filtros" />
+                        </div>
+                    </form> 
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
